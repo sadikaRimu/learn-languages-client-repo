@@ -1,10 +1,9 @@
 import React from 'react';
-import { Container } from 'postcss';
-import { Col, Row } from 'react-bootstrap';
+import { Container, Col, Row } from 'react-bootstrap';
 import { Outlet } from 'react-router-dom';
-import Header from '../Header/Header';
-import LeftSideNav from '../Shared/LeftSideNav/LeftSideNav';
 import Footer from '../components/Footer/Footer';
+import Header from '../components/Shared/Header/Header';
+import LeftSideNav from '../components/Shared/LeftSideNav/LeftSideNav';
 
 
 const Main = () => {
@@ -14,11 +13,14 @@ const Main = () => {
             <Container>
                 <Row>
                     <Col lg='2' className='d-none d-lg-block'>
-                        <LeftSideNav></LeftSideNav>
+
                     </Col>
-                    <Col lg='10'>
+                    <Col lg='7'>
                         <Outlet>
                         </Outlet>
+                    </Col>
+                    <Col lg='3'>
+                        <LeftSideNav></LeftSideNav>
                     </Col>
                 </Row>
             </Container>

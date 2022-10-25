@@ -1,4 +1,4 @@
-import { Container } from 'postcss';
+import { Container } from 'react-bootstrap';
 import React from 'react';
 import { useContext } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
@@ -6,24 +6,27 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import Image from 'react-bootstrap/Image';
-import { FaUserAlt } from 'react-icons/fa';
+//import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
-    const { user, logOut } = useContext(AuthContext);
+    const { user } = useContext(AuthContext);
     const handleLogOut = () => {
-        logOut()
-            .then(() => { })
-            .catch(error => console.error(error))
+        // logOut()
+        //     .then(() => { })
+        //     .catch(error => console.error(error))
     }
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
             <Container>
-                <Navbar.Brand><Link to='/'>Dragon News</Link></Navbar.Brand>
+                <Navbar.Brand><Link to='/'>Learn Programing Languages</Link></Navbar.Brand>
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link href="#features">All News</Nav.Link>
-                        <Nav.Link href="#pricing">Pricing</Nav.Link>
+                        <Nav.Link><Link>Home</Link></Nav.Link>
+                        <Nav.Link><Link to='/courseCategory'>Courses</Link> </Nav.Link>
+                        <Nav.Link><Link>FAQ</Link></Nav.Link>
+                        <Nav.Link><Link>Blog</Link></Nav.Link>
+                        <Nav.Link><Link>Theme: light</Link></Nav.Link>
                     </Nav>
                     <Nav>
                         <>
@@ -44,7 +47,7 @@ const Header = () => {
                             {
                                 user?.photoURL ?
                                     <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL} ></Image>
-                                    : <FaUserAlt></FaUserAlt>
+                                    : <></>
                             }
                         </Link>
                     </Nav>
@@ -54,6 +57,7 @@ const Header = () => {
                 </Navbar.Collapse>
             </Container>
         </Navbar>
+
     );
 };
 

@@ -1,9 +1,12 @@
 import React from 'react';
+//import Image from 'react-bootstrap/Image';
+import Image from '../../images/LearnPrograming.png'
 
 const Home = () => {
     return (
         <div>
-            <h2>home page</h2>
+            {/* <Image src='../../images/LearnPrograming.png' alt='' ></Image> */}
+            <h3>this is home page</h3>
         </div>
     );
 };
