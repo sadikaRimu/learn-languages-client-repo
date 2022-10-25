@@ -1,6 +1,6 @@
 import React from 'react';
 //import Image from 'react-bootstrap/Image';
-import Image from '../../images/LearnPrograming.png'
+//import Image from '../../images/LearnPrograming.png'
 
 const Home = () => {
     return (

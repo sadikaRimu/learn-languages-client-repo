@@ -9,11 +9,11 @@ import Image from 'react-bootstrap/Image';
 //import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
-    const { user } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const handleLogOut = () => {
-        // logOut()
-        //     .then(() => { })
-        //     .catch(error => console.error(error))
+        logOut()
+            .then(() => { })
+            .catch(error => console.error(error))
     }
     return (
         <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
@@ -22,18 +22,19 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link><Link>Home</Link></Nav.Link>
+                        <Nav.Link><Link to='/'>Home</Link></Nav.Link>
                         <Nav.Link><Link to='/courseCategory'>Courses</Link> </Nav.Link>
-                        <Nav.Link><Link>FAQ</Link></Nav.Link>
-                        <Nav.Link><Link>Blog</Link></Nav.Link>
+                        <Nav.Link><Link to='/faq'>FAQ</Link></Nav.Link>
+                        <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
                         <Nav.Link><Link>Theme: light</Link></Nav.Link>
                     </Nav>
+                    {/* <Button onClick={handleLogOut} variant="light">Logout</Button> */}
                     <Nav>
                         <>
                             {
-                                user?.uid ?
+                                user ?
                                     <>
-                                        <span>{user?.displayName}</span>
+                                        {/* <span>{user?.displayName}</span> */}
                                         <Button onClick={handleLogOut} variant="light">Logout</Button>
                                     </>
                                     :
