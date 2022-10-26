@@ -1,0 +1,14 @@
+.all-category {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+}
+
+@media (min-width: 310px) and (max-width: 992px) {
+    .all-category {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 992px) {}

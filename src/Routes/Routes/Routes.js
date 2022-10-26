@@ -9,7 +9,9 @@ import FAQ from '../../components/FAQ/FAQ';
 import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login/Login';
 import Register from '../../components/Login/Register/Register';
+import Premium from '../../components/Premium/Premium';
 import Main from '../../layout/Main';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
 export const routes = createBrowserRouter([
     {
@@ -19,7 +21,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                // loader: () => fetch('http://localhost:5000/news')
+                loader: () => fetch('http://localhost:5000/course-categories')
             },
             {
                 //path: '/courseCategory/:id',
@@ -37,7 +39,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses/:id',
                 element: <Courses></Courses>,
-                // loader: ({ params }) => fetch(`http://localhost:5000/news/${params.id}`)
+                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
             },
             {
                 path: '/faq',
@@ -54,11 +56,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/register',
                 element: <Register></Register>
-            }
-            // {
-            //     path: '/terms',
-            //     element: <TermsAndConditions></TermsAndConditions>
-            // },
+            },
+            {
+                path: '/premium',
+                element: <PrivateRoute><Premium></Premium></PrivateRoute>
+            },
             // {
             //     path: '/profile',
             //     element: <PrivateRoute><Profile></Profile></PrivateRoute>
