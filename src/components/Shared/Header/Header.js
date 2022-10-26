@@ -2,11 +2,13 @@ import { Container } from 'react-bootstrap';
 import React from 'react';
 import { useContext } from 'react';
 import { Button, Nav, Navbar } from 'react-bootstrap';
+import { FaUserAlt } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext, ThemeContext } from '../../../context/AuthProvider/AuthProvider';
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import Image from 'react-bootstrap/Image';
 import ReactSwitch from 'react-switch';
+
 //import { FaUserAlt } from 'react-icons/fa';
 
 const Header = () => {
@@ -18,8 +20,8 @@ const Header = () => {
             .catch(error => console.error(error))
     }
     return (
-        <Navbar id={theme} collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
-            <Container>
+        <Navbar sticky="top" id={theme} collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
+            <Container className='position-sticky'>
                 <Navbar.Brand><Link to='/'>
                     <img src='../../../../public/plLogo.png' alt='' />
                 </Link></Navbar.Brand>
@@ -28,11 +30,10 @@ const Header = () => {
                 <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                 <Navbar.Collapse id="responsive-navbar-nav">
                     <Nav className="me-auto">
-                        <Nav.Link><Link to='/'>Home</Link></Nav.Link>
-                        <Nav.Link><Link to='/courseCategory'>Courses</Link> </Nav.Link>
-                        <Nav.Link><Link to='/faq'>FAQ</Link></Nav.Link>
-                        <Nav.Link><Link to='/blog'>Blog</Link></Nav.Link>
-                        <Nav.Link><Link>Theme: light</Link></Nav.Link>
+                        <Nav.Link><Link className='btn btn-primary' to='/'>Home</Link></Nav.Link>
+                        <Nav.Link><Link className='btn btn-primary' to='/courseCategory'>Courses</Link> </Nav.Link>
+                        <Nav.Link><Link className='btn btn-primary' to='/faq'>FAQ</Link></Nav.Link>
+                        <Nav.Link><Link className='btn btn-primary' to='/blog'>Blog</Link></Nav.Link>
                     </Nav>
                     {/* <Button onClick={handleLogOut} variant="light">Logout</Button> */}
                     <Nav>
@@ -40,13 +41,13 @@ const Header = () => {
                             {
                                 user ?
                                     <>
-                                        {/* <span>{user?.displayName}</span> */}
+                                        <span>{user?.displayName}</span>
                                         <Button onClick={handleLogOut} variant="light">Logout</Button>
                                     </>
                                     :
                                     <>
-                                        <Link to='/login'>Login</Link>
-                                        <Link to='/register'>Register</Link>
+                                        <Link className='btn btn-primary me-2' to='/login'>Login</Link>
+                                        <Link className='btn btn-primary me-2' to='/register'>Register</Link>
                                     </>
                             }
                         </>
@@ -54,7 +55,7 @@ const Header = () => {
                             {
                                 user?.photoURL ?
                                     <Image style={{ height: '30px' }} roundedCircle src={user?.photoURL} ></Image>
-                                    : <></>
+                                    : <FaUserAlt></FaUserAlt>
                             }
                         </Link>
                     </Nav>
@@ -63,7 +64,7 @@ const Header = () => {
                     </div>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
+        </Navbar >
 
     );
 };

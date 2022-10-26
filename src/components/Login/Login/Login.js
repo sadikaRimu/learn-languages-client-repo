@@ -1,10 +1,16 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
-    const { signIn } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const { signIn, setLoading } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const from = location.state?.from?.pathname || '/';
     const handleLogin = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -15,8 +21,22 @@ const Login = () => {
                 const user = result.user;
                 console.log(user);
                 form.reset();
+                setError('');
+                // if (user.emailVerified) {
+                //     navigate(from, { replace: true });
+                // }
+                // else {
+                //     toast.error('your email is not vaerified');
+                // }
             })
-            .catch(error => console.error(error))
+            .catch(error => {
+                console.error(error);
+                setError(error.message);
+            })
+            .finally(() => {
+                setLoading(false);
+            })
+
     }
     return (
         <Form onSubmit={handleLogin}>
@@ -34,7 +54,7 @@ const Login = () => {
                 Login
             </Button>
             <Form.Text className="text-danger">
-                {/* {error} */}
+                {error}
             </Form.Text>
         </Form>
     );

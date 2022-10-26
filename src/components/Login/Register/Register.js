@@ -1,10 +1,15 @@
 import React, { useContext } from 'react';
+import { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
+//import toast from 'react-hot-toast';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Register = () => {
-    const { createUser } = useContext(AuthContext);
+    const { createUser, updateUserProfile, verifyEmail } = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [accepted, setAccepted] = useState(false);
     const handleRegister = (event) => {
         event.preventDefault();
         const form = event.target;
@@ -16,8 +21,34 @@ const Register = () => {
             .then(result => {
                 const user = result.user;
                 console.log(user);
+                setError('');
+                form.reset();
+                handleUpdateUserProfile(name, photoURL);
+                // handleEmailVerification();
+
             })
+            .catch(error => {
+                console.error(error)
+                setError(error.message);
+            });
+
+    }
+    const handleUpdateUserProfile = (name, photoURL) => {
+        const profile = {
+            displayName: name,
+            photoURL: photoURL
+        }
+        updateUserProfile(profile)
+            .then(() => { })
             .catch(error => console.error(error));
+    }
+    // const handleEmailVerification = () => {
+    //     verifyEmail()
+    //         .then(() => { })
+    //         .catch(error => console.error(error));
+    // }
+    const handleAccepted = (event) => {
+        setAccepted(event.target.checked);
 
     }
     return (
@@ -42,15 +73,16 @@ const Register = () => {
             <Form.Group className="mb-3" controlId="formBasicCheckbox">
                 <Form.Check
                     type="checkbox"
-
+                    onClick={handleAccepted}
                     label={<>Accept <Link to='/terms'>Terms and Conditions</Link></>} />
             </Form.Group>
             <Button variant="primary" type="submit">
                 Register
             </Button>
             <Form.Text className="text-danger">
-                {/* {error} */}
+                <strong>{error}</strong>
             </Form.Text>
+
         </Form>
     );
 };

@@ -24,11 +24,11 @@ export const routes = createBrowserRouter([
                 loader: () => fetch('http://localhost:5000/course-categories')
             },
             {
-                //path: '/courseCategory/:id',
+
                 path: '/courseCategory',
                 element: <CourseCategory></CourseCategory>,
                 loader: () => fetch('http://localhost:5000/courses')
-                // loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+
 
             },
             {
@@ -60,11 +60,8 @@ export const routes = createBrowserRouter([
             {
                 path: '/premium',
                 element: <PrivateRoute><Premium></Premium></PrivateRoute>
-            },
-            // {
-            //     path: '/profile',
-            //     element: <PrivateRoute><Profile></Profile></PrivateRoute>
-            // }
+            }
+
         ]
     }
 ]) 
