@@ -22,25 +22,25 @@ export const routes = createBrowserRouter([
             {
                 path: '/',
                 element: <Home></Home>,
-                loader: () => fetch('http://localhost:5000/course-categories')
+                loader: () => fetch('https://sadika-assignment10-server.vercel.app/course-categories')
             },
             {
 
                 path: '/courseCategory',
                 element: <CourseCategory></CourseCategory>,
-                loader: () => fetch('http://localhost:5000/courses')
+                loader: () => fetch('https://sadika-assignment10-server.vercel.app/courses')
 
 
             },
             {
                 path: '/category/:id',
                 element: <CourseCategory></CourseCategory>,
-                loader: ({ params }) => fetch(`http://localhost:5000/category/${params.id}`)
+                loader: ({ params }) => fetch(`https://sadika-assignment10-server.vercel.app/category/${params.id}`)
             },
             {
                 path: '/courses/:id',
                 element: <Courses></Courses>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://sadika-assignment10-server.vercel.app/courses/${params.id}`)
             },
             {
                 path: '/faq',
@@ -61,7 +61,7 @@ export const routes = createBrowserRouter([
             {
                 path: '/premium/:id',
                 element: <PrivateRoute><Premium></Premium></PrivateRoute>,
-                loader: ({ params }) => fetch(`http://localhost:5000/courses/${params.id}`)
+                loader: ({ params }) => fetch(`https://sadika-assignment10-server.vercel.app/courses/${params.id}`)
             }
 
         ]

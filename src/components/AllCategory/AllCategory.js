@@ -15,7 +15,7 @@ const AllCategory = ({ category }) => {
                     </Card.Text>
                     <div className='d-flex justify-content-between'>
                         <Link to={`/category/${id}`}>
-                            <Button variant="primary">All Courses in this category</Button>
+                            <Button variant="primary"> Show All Courses in this category</Button>
                         </Link>
                     </div>
                 </Card.Body>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaGoogle, FaGithub, FaPhone, FaMailBulk, FaFacebook } from "react-icons/fa";
 
 
 const Footer = () => {
@@ -7,7 +8,8 @@ const Footer = () => {
             <hr className='p-3' />
             <div>
                 <h4 className='text-center mt-6'>Stay tuned</h4>
-                <p>contact us: 12345678</p>
+                <p>contact us: </p>
+                <span><FaPhone></FaPhone></span><span className='ms-2'><FaMailBulk></FaMailBulk></span><span className='ms-2'><FaFacebook></FaFacebook></span>
             </div>
         </div>
     );

@@ -8,6 +8,7 @@ import { AuthContext, ThemeContext } from '../../../context/AuthProvider/AuthPro
 import LeftSideNav from '../LeftSideNav/LeftSideNav';
 import Image from 'react-bootstrap/Image';
 import ReactSwitch from 'react-switch';
+import plLogo from '../../../plLogo.png';
 import { GithubAuthProvider, GoogleAuthProvider } from 'firebase/auth';
 
 //import { FaUserAlt } from 'react-icons/fa';
@@ -43,7 +44,7 @@ const Header = () => {
         <Navbar sticky="top" id={theme} collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
             <Container className='position-sticky'>
                 <Navbar.Brand><Link to='/'>
-                    <img src='../../../../public/plLogo.png' alt='' />
+                    <img className='rounded-circle' src={plLogo} alt='' style={{ height: '40px' }} />
                 </Link></Navbar.Brand>
                 <Navbar.Brand><Link to='/'>Learn Programing Languages</Link></Navbar.Brand>
                 <ReactSwitch onChange={toggleTheme} checked={theme === 'dark'} />
@@ -86,9 +87,7 @@ const Header = () => {
                             }
                         </Link> */}
                     </Nav>
-                    <div className='d-lg-none'>
-                        <LeftSideNav></LeftSideNav>
-                    </div>
+
                 </Navbar.Collapse>
             </Container>
         </Navbar >
