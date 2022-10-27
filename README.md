@@ -68,3 +68,18 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+About My website:
+Name: Learn Programing Languages
+Live site :
+Features:
+->Login: user can be logged in by using email and password
+->Registration: before login user have to be registered user by giving needed information like- email,password,full name, photo.
+->Google and Github login: user can log in by email or github account
+->Explore Courses: User can explore courses feature and categories without login
+->Premium Courses: User can enroll courses by get premium access through login or register
+Used frameworks & libraries
+->react-bootstrap
+->react js
+->react font icons 
