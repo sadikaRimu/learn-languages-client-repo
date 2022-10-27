@@ -10,6 +10,7 @@ import Home from '../../components/Home/Home';
 import Login from '../../components/Login/Login/Login';
 import Register from '../../components/Login/Register/Register';
 import Premium from '../../components/Premium/Premium';
+import PageNotFound from '../../components/Shared/Others/PageNotFound';
 import Main from '../../layout/Main';
 import PrivateRoute from '../PrivateRoute/PrivateRoute';
 
@@ -64,5 +65,10 @@ export const routes = createBrowserRouter([
             }
 
         ]
+
+    },
+    {
+        path: '*',
+        element: <PageNotFound></PageNotFound>
     }
 ]) 
