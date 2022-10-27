@@ -11,7 +11,7 @@ const auth = getAuth(app);
 
 const AuthProvider = ({ children }) => {
     const [user, setUser] = useState('rimu');
-    const [theme, setTheme] = useState('dark');
+    const [theme, setTheme] = useState('light');
     const [loading, setLoading] = useState(true);
     const toggleTheme = () => {
         setTheme((currentTheme) => (currentTheme === 'light' ? 'dark' : 'light'));
@@ -37,9 +37,10 @@ const AuthProvider = ({ children }) => {
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
             console.log('user inside state change', currentUser);
-            if (currentUser === null) {
-                setUser(currentUser);
-            }
+            // if (currentUser === null) {
+            //     setUser(currentUser);
+            // }
+            setUser(currentUser);
             setLoading(false);
         });
         return () => {

@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { Button, Form } from 'react-bootstrap';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider/AuthProvider';
 
 const Login = () => {
@@ -28,6 +28,7 @@ const Login = () => {
                 // else {
                 //     toast.error('your email is not vaerified');
                 // }
+                navigate(from, { replace: true });
             })
             .catch(error => {
                 console.error(error);
@@ -53,6 +54,9 @@ const Login = () => {
             <Button variant="primary" type="submit">
                 Login
             </Button>
+            <Form.Text className="ms-2">
+                Not registered yet? <Link to='/register'>Create Account</Link>
+            </Form.Text>
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
